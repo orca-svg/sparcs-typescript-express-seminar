@@ -1,6 +1,6 @@
 class FeedDB {
   static inst: FeedDB;
-  static getInst = (): FeedDB => {
+  static getInst = () => {
     if (!FeedDB.inst) FeedDB.inst = new FeedDB();
     return FeedDB.inst;
   };
