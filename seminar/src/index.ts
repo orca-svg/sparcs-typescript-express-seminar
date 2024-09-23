@@ -1,6 +1,8 @@
 import express from "express";
 import cors, { CorsOptions } from "cors";
 
+import statusRouter from "./routes/status";
+
 const app = express();
 const port = 8080;
 
@@ -18,13 +20,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.get("/", (req, res) => {
-  res.send("Hello, world!");
-});
-
-app.get("/status", (req, res) => {
-  res.json({ isOnline: true });
-});
+app.use("/status", statusRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
