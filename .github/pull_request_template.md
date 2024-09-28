@@ -1,8 +1,10 @@
 ## Checklist
 
-- [ ] Example 1 (Feed) 에서 편집 기능 추가
-- [ ] Example 2 에서 인증에 사용되는 API Key를 사용자 이름과 비밀번호로 변경하기
-- [ ] CRUD가 포함된 새로운 기능 하나 구현하기! (정말 아무거나 상관 없습니다!)
+- [ ] `feedRouter`에 기존 피드를 편집할 수 있는 API 추가하기
+- [ ] `feedRouter`에 있는 `POST` Method를 사용하는 모든 API에 Zod를 사용한 `req.body` 스키마 검증 추가하기
+- [ ] HTTP Request가 들어올 때마다, Method와 Path, 그리고 현재 시각을 출력하는 미들웨어 만들기
+- [ ] CRUD가 모두 포함된 새로운 라우터 만들기
+  - `POST` Method를 사용하는 API에는 Zod를 사용한 스키마 검증이 포함되어야 합니다.
 
 ## 나만의 새로운 기능 자랑하기
 
