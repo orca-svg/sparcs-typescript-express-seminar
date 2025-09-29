@@ -8,7 +8,10 @@ router.get("/getFeed", (req, res) => {
     const requestCount = parseInt(req.query.count as string, 10);
     const storeRes = feedStore.selectItems(requestCount);
     if (storeRes.success) {
-      res.json(storeRes.data);
+      res.json(storeRes.data.map(({ id, ...item}) => ({
+        ...item,
+        id: id.toString(),
+      })));
     } else {
       res.status(400).json(storeRes.data);
     }

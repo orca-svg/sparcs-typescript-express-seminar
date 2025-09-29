@@ -9,9 +9,9 @@ class FeedDB {
   LDataDB = [ { id: 0, title: "test1", content: "Example body" } ];
 
   selectItems = (count: number) => {
-    if (count > this.itemCount) return { success: false, data: "Too many items queried" };
-    if (count < 0) return { success: false, data: "Invalid count provided" };
-    else return { success: true, data: this.LDataDB.slice(0, count) };
+    if (count > this.itemCount) return { success: false as const, data: "Too many items queried" };
+    if (count < 0) return { success: false as const, data: "Invalid count provided" };
+    else return { success: true as const, data: this.LDataDB.slice(0, count) };
   };
 
   insertItem = (item: { title: string; content: string }) => {
