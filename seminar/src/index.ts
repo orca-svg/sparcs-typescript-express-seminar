@@ -1,6 +1,8 @@
 import express from "express";
 import cors, { CorsOptions } from "cors";
 import path from "path";
+import logRequest from "./middlewares/logRequest";
+import todoRouter from "./routes/todo";
 
 import statusRouter from "./routes/status";
 import feedRouter from "./routes/feed";
@@ -24,10 +26,12 @@ const corsOptions = {
 } satisfies CorsOptions;
 
 app.use(cors(corsOptions));
+app.use(logRequest);
 
 app.use("/status", statusRouter);
 app.use("/feed", feedRouter);
 app.use("/account", accountRouter);
+app.use("/todo", todoRouter);  
 app.use("/static", express.static(path.join(__dirname, "public")));
 
 app.listen(port, () => {

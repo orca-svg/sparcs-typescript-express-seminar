@@ -30,6 +30,12 @@ class FeedDB {
     if (BItemDeleted) this.itemCount--;
     return BItemDeleted;
   };
-}
 
+  updateItem = (id: number, newTitle: string, newContent: string) => {
+   const idx = this.LDataDB.findIndex((v) => v.id === id);
+  if (idx === -1) return { success: false as const, data: "Feed not found" };
+  this.LDataDB[idx] = { ...this.LDataDB[idx], title: newTitle, content: newContent };
+  return { success: true as const, data: this.LDataDB[idx] };
+}
+}
 export default FeedDB.getInst();

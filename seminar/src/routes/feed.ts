@@ -48,4 +48,24 @@ router.post("/deleteFeed", (req, res) => {
   }
 });
 
+router.post("/editFeed", (req, res) => {
+  try {
+    const { id, newTitle, newContent } = req.body as {
+      id: string; newTitle: string; newContent: string;
+    };
+    const parsedId = parseInt(id, 10);
+    if (Number.isNaN(parsedId)) {
+      return res.status(400).json({ error: "Invalid id" });
+    }
+    const result = feedStore.updateItem(parsedId, newTitle, newContent);
+    if (result.success) {
+      const { id: numId, ...rest } = result.data;
+       return res.json({ success: true, feed: { ...rest, id: numId.toString() } });
+      }
+      return res.status(404).json({ success: false, error: result.data });
+    } catch (e) {
+      res.status(500).json({ error: e });
+    }})
+
+
 export default router;
